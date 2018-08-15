@@ -72,6 +72,20 @@ $(document).ready(function () {
         }
     }
 
+    // This function handles events where a movie button is clicked
+    $("#addBand").on("click", function (event) {
+        event.preventDefault();
+        // This line grabs the input from the textbox
+        var newBand = $("#band-input").val().trim();
+
+        // Adding movie from the textbox to our array
+        topics.push(newBand);
+
+        // Calling renderButtons which handles the processing of our movie array
+        showButtons();
+        //$("#band-input").empty()
+    });
+
 
 
 
