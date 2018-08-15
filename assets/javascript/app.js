@@ -32,8 +32,14 @@ $(document).ready(function () {
 
                 // Creating and storing an image tag
                 var bandImage = $("<img>");
+                bandImage.addClass("freeze");
                 // Setting the src attribute of the image to a property pulled off the result item
-                bandImage.attr("src", results[i].images.fixed_height.url);
+                bandImage.attr("src", results[i].images.fixed_height_still.url);
+                var still = results[i].images.fixed_height_still.url;
+                var animate = results[i].images.fixed_height.url;
+                bandImage.attr("data-state", "still");
+                bandImage.attr("data-animate", animate);
+                bandImage.attr("data-still", still);
 
                 // Appending the paragraph and image tag to the bandDiv
                 bandDiv.append(gifRating);
@@ -91,6 +97,20 @@ $(document).ready(function () {
 
     ///adds an event listner for all the buttons to run displayBand function on click
     $(document).on("click", ".band-btn", displayBand);
+
+    $(document).on("click", ".freeze", function () {
+        var state = $(this).attr("data-state");
+        var unfreeze = $(this).attr("data-animate");
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
+
+
     ////runs the function to show the array of buttons whenthe page first loads
     showButtons();
 
