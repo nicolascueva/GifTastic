@@ -1,0 +1,29 @@
+button,
+div,
+h1,
+label,
+form,
+input {
+  margin: 10px;
+}
+
+body{
+    background-color: grey;
+}
+h1{
+    font-weight: bold;
+    background-color: brown;
+}
+
+button{
+    background-color: bisque;
+}
+
+label{
+    color:white;
+    font-weight: bold;
+}
+
+input{
+    background-color:tan;
+}
